@@ -1,3 +1,14 @@
+# Project overview
+
+SPA with several routes inside
+
+- Frontpage
+- User Database
+- Emissions Chart
+- Calculator?
+
+Navigate through a Gray Sidebar
+
 # AngularShowcase
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.6.
