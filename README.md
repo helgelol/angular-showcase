@@ -5,9 +5,9 @@ SPA with several routes inside
 - Frontpage
 - User Database
 - Emissions Chart
-- Calculator?
-
-Navigate through a Gray Sidebar
+- Fatchart
+- Google Auth
+- Firebase/Redis for data
 
 # AngularShowcase
 
