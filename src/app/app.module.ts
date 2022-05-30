@@ -6,9 +6,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { UsersComponent } from './components/users/users.component';
+import { DetailsComponent } from './components/details/details.component';
+import { FrontpageComponent } from './components/frontpage/frontpage.component';
 
 @NgModule({
-  declarations: [AppComponent, SidebarComponent, UsersComponent],
+  declarations: [AppComponent, SidebarComponent, UsersComponent, DetailsComponent, FrontpageComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
