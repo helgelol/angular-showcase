@@ -8,9 +8,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { UsersComponent } from './components/users/users.component';
 import { DetailsComponent } from './components/details/details.component';
 import { FrontpageComponent } from './components/frontpage/frontpage.component';
+import { ContactcardComponent } from './contactcard/contactcard.component';
 
 @NgModule({
-  declarations: [AppComponent, SidebarComponent, UsersComponent, DetailsComponent, FrontpageComponent],
+  declarations: [AppComponent, SidebarComponent, UsersComponent, DetailsComponent, FrontpageComponent, ContactcardComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

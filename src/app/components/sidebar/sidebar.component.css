@@ -13,5 +13,5 @@ nav ul li a {
     display: block;
 }
 nav ul li .activated {
-    background-color: #00a8ff;
+    background-color: rgb(249 115 22);
 }
