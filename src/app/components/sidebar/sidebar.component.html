@@ -19,9 +19,22 @@
       </a>
     </li>
     <li>
-      <a routerLink="posts" routerLinkActive="activated">
+      <a
+        routerLink="emissions"
+        routerLinkActive="activated"
+        [routerLinkActiveOptions]="{ exact: true }">
         <i class="material-icons"
-          ><span class="material-icons-outlined"> show_chart </span></i
+          ><span class="material-icons-outlined"> pie_chart </span></i
+        >
+      </a>
+    </li>
+    <li>
+      <a
+        routerLink="weight"
+        routerLinkActive="activated"
+        [routerLinkActiveOptions]="{ exact: true }">
+        <i class="material-icons"
+          ><span class="material-icons-outlined"> trending_down </span></i
         >
       </a>
     </li>
