@@ -11,9 +11,9 @@ import {
 } from '@angular/animations';
 
 @Component({
-  selector: 'app-contactcard',
-  templateUrl: './contactcard.component.html',
-  styleUrls: ['./contactcard.component.css'],
+  selector: 'app-contacts',
+  templateUrl: './contacts.component.html',
+  styleUrls: ['./contacts.component.css'],
   animations: [
     trigger('listStagger', [
       transition('* <=> *', [
@@ -38,7 +38,7 @@ import {
     ]),
   ],
 })
-export class ContactcardComponent implements OnInit {
+export class ContactsComponent implements OnInit {
   users$!: any; // sorry for hackz
 
   constructor(private data: DataService) {}
