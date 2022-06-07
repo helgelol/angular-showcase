@@ -1,21 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UsersComponent } from './components/users/users.component';
-import { DetailsComponent } from './components/details/details.component';
-import { FrontpageComponent } from './components/frontpage/frontpage.component';
+import { HomeComponent } from './pages/home/home.component';
+import { EmissionsComponent } from './pages/emissions/emissions.component';
+import { WeightComponent } from './pages/weight/weight.component';
+import { UserdbComponent } from './pages/userdb/userdb.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: FrontpageComponent,
+    component: HomeComponent,
   },
   {
     path: 'users',
-    component: UsersComponent,
+    component: UserdbComponent,
   },
   {
-    path: 'details/:id',
-    component: DetailsComponent,
+    path: 'emissions',
+    component: EmissionsComponent,
+  },
+  {
+    path: 'weight',
+    component: WeightComponent,
   },
 ];
 
