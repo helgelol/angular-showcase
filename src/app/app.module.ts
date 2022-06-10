@@ -11,6 +11,8 @@ import { EmissionsComponent } from './pages/emissions/emissions.component';
 import { WeightComponent } from './pages/weight/weight.component';
 import { UserdbComponent } from './pages/userdb/userdb.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
+import { EmissionsCarbonIntensityComponent } from './components/emissions-carbon-intensity/emissions-carbon-intensity.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,14 @@ import { ContactsComponent } from './components/contacts/contacts.component';
     WeightComponent,
     UserdbComponent,
     ContactsComponent,
+    EmissionsCarbonIntensityComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,36 @@
+<div class="center-dropdown">
+  <h1>Pick a country</h1>
+  <select
+    style="width: 200px"
+    [ngModel]="selectedCountryObj"
+    (ngModelChange)="onChangeObj($event)"
+    name="selectedCountry">
+    <option [ngValue]="i" *ngFor="let i of countryObjects">
+      {{ i.name }}
+    </option>
+  </select>
+  <br />
+  {{ selectedCountryObj.name }}
+</div>
+<div *ngIf="carbonData">
+  {{ carbonData | json }}
+</div>
+
+<!-- <div class="center-dropdown">
+    <select
+      style="width: 200px;"
+      bind:value={selectedCountry}
+      on:change|preventDefault={getEndpointData(selectedCountry)}
+    >
+      <option disabled selected value style="display: none;">Select Country</option>
+      {#each carbonDataCountry as country}
+        <option value={country}>
+          {country}
+        </option>
+      {/each}
+    </select>
+  </div>
+  <div>
+    <Carbon {carbonData} {carbonDataIndex} {carbonDataIndexNumber} />
+    <Chart {chartValues} {chartNames} {showChart} />
+  </div> -->
