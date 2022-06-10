@@ -9,6 +9,7 @@ import {
   animate,
   keyframes,
 } from '@angular/animations';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-contacts',
@@ -39,11 +40,11 @@ import {
   ],
 })
 export class ContactsComponent implements OnInit {
-  users$!: any; // sorry for hackz
+  users$: Observable<any> = of(); // sorry for hackz
 
   constructor(private data: DataService) {}
 
   ngOnInit(): void {
-    this.data.getUsers().subscribe(data => (this.users$ = data));
+    this.users$ = this.data.getUsers();
   }
 }

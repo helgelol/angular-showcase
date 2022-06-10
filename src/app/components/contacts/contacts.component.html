@@ -1,18 +1,20 @@
-<ul [@listStagger]="users$">
-  <li *ngFor="let user of users$">
-    <h1 class="text-xl text-orange-500 font-semibold">
-      {{ user.name }}
-      <span class="font-thin text-gray-400">@{{ user.username }}</span>
-    </h1>
-    <ul>
-      <li><b class="text-gray-400">Phone:</b> {{ user.phone }}</li>
-      <li><b class="text-gray-400">E-Mail:</b> {{ user.email }}</li>
-      <li>
-        <b class="text-gray-400">Website:</b>
-        <a class="text-orange-500" href="http://{{ user.website }}">
-          {{ user.website }}</a
-        >
-      </li>
-    </ul>
-  </li>
-</ul>
+<ng-container *ngIf="users$ | async; let users">
+  <ul [@listStagger]="users">
+    <li *ngFor="let user of users">
+      <h1 class="text-xl text-orange-500 font-semibold">
+        {{ user.name }}
+        <span class="font-thin text-gray-400">@{{ user.username }}</span>
+      </h1>
+      <ul>
+        <li><b class="text-gray-400">Phone:</b> {{ user.phone }}</li>
+        <li><b class="text-gray-400">E-Mail:</b> {{ user.email }}</li>
+        <li>
+          <b class="text-gray-400">Website:</b>
+          <a class="text-orange-500" href="http://{{ user.website }}">
+            {{ user.website }}</a
+          >
+        </li>
+      </ul>
+    </li>
+  </ul>
+</ng-container>
