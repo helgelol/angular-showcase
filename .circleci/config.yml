@@ -5,6 +5,7 @@ version: 2.1
 
 jobs:
   install-deps:
+    working_directory: ~/angular-showcase
     docker:
       - image: cimg/base:stable
     steps:
