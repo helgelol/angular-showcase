@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/angular-showcase
     docker:
-      - image: circleci/node:6-browsers
+      - image: cimg/node:16.15.1-browsers
     steps:
       - checkout
       - run:
