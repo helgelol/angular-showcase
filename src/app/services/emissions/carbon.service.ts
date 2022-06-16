@@ -29,18 +29,20 @@ export class CarbonDataModel {
   data?: [
     {
       shortname: String;
-      data: {
-        intensity: {
-          forecast: Number;
-          index: String;
-        };
-        generationmix: [
-          {
-            fuel: String;
-            perc: Number;
-          }
-        ];
-      };
+      data?: [
+        {
+          intensity: {
+            forecast: Number;
+            index: String;
+          };
+          generationmix: [
+            {
+              fuel: String;
+              perc: Number;
+            }
+          ];
+        }
+      ];
     }
   ];
 }

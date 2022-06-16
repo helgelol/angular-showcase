@@ -1,36 +1,36 @@
 <div class="center-dropdown">
   <h1>Pick a country</h1>
   <select
-    style="width: 200px"
+    class="text-2xl font-semibold rounded-lg text-center w-64 h-8"
     [ngModel]="selectedCountryObj"
     (ngModelChange)="onChangeObj($event)"
     name="selectedCountry">
-    <option [ngValue]="i" *ngFor="let i of countryObjects">
-      {{ i.name }}
+    <option [ngValue]="country" *ngFor="let country of countryObjects">
+      {{ country.name }}
     </option>
   </select>
-  <br />
-  {{ selectedCountryObj.name }}
 </div>
-<div *ngIf="carbonData">
-  {{ carbonData | json }}
-</div>
-
-<!-- <div class="center-dropdown">
-    <select
-      style="width: 200px;"
-      bind:value={selectedCountry}
-      on:change|preventDefault={getEndpointData(selectedCountry)}
-    >
-      <option disabled selected value style="display: none;">Select Country</option>
-      {#each carbonDataCountry as country}
-        <option value={country}>
-          {country}
-        </option>
-      {/each}
-    </select>
+<div *ngIf="carbonData" class="mt-4">
+  <h1>{{ carbonDataCountry }}</h1>
+  <div *ngIf="highCarbonDataIndex">
+    <h2 style="color: red">
+      {{ carbonDataIndexNumber }} ({{ carbonDataIndex }})
+    </h2>
+    <p>gCO<span style="font-size: x-small">2</span>/kwh</p>
   </div>
-  <div>
-    <Carbon {carbonData} {carbonDataIndex} {carbonDataIndexNumber} />
-    <Chart {chartValues} {chartNames} {showChart} />
-  </div> -->
+  <div *ngIf="moderateCarbonDataIndex">
+    <h2 style="color: orange">
+      {{ carbonDataIndexNumber }} ({{ carbonDataIndex }})
+    </h2>
+    <p>gCO<span style="font-size: x-small">2</span>/kwh</p>
+  </div>
+  <div *ngIf="lowCarbonDataIndex">
+    <h2 style="color: green">
+      {{ carbonDataIndexNumber }} ({{ carbonDataIndex }})
+    </h2>
+    <p>gCO<span style="font-size: x-small">2</span>/kwh</p>
+  </div>
+
+  <!-- {{ carbonData | json }} -->
+  <!-- {{ carbonData.data[0].data[0].intensity.index }} -->
+</div>

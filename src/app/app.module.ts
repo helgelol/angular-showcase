@@ -13,6 +13,12 @@ import { UserdbComponent } from './pages/userdb/userdb.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { EmissionsCarbonIntensityComponent } from './components/emissions-carbon-intensity/emissions-carbon-intensity.component';
 import { FormsModule } from '@angular/forms';
+import {
+  IgxItemLegendModule,
+  IgxLegendModule,
+  IgxPieChartModule,
+} from 'igniteui-angular-charts';
+import { EmissionsChartTestComponent } from './components/emissions-chart-test/emissions-chart-test.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     UserdbComponent,
     ContactsComponent,
     EmissionsCarbonIntensityComponent,
+    EmissionsChartTestComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +38,9 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    IgxPieChartModule,
+    IgxLegendModule,
+    IgxItemLegendModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

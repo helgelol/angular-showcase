@@ -3,7 +3,6 @@ import {
   CarbonDataModel,
   CarbonService,
 } from 'src/app/services/emissions/carbon.service';
-// import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-emissions-carbon-intensity',
@@ -12,6 +11,15 @@ import {
 })
 export class EmissionsCarbonIntensityComponent {
   selectedDeviceObj!: { name: any };
+  carbonDataCountry?: String;
+  carbonDataIndexNumber?: Number;
+  carbonDataIndex?: String;
+  lowCarbonDataIndex?: Boolean;
+  moderateCarbonDataIndex?: Boolean;
+  highCarbonDataIndex?: Boolean;
+  carbonDataMix?: String[];
+  chartValues?: String[];
+  chartNames?: String[];
 
   constructor(private data: CarbonService) {}
 
@@ -20,46 +28,55 @@ export class EmissionsCarbonIntensityComponent {
     { name: 'Wales' },
     { name: 'Scotland' },
   ];
+
   carbonData?: CarbonDataModel;
-  // Declarations
-  // selectedCountry: string = '';
-  // preUrlEndpoint: string = 'https://api.carbonintensity.org.uk/regional/';
-  // endpoint: string = '';
-  // carbonData: any = [];
-  // carbonDataIndex: string = '';
-  // carbonDataIndexNumber: string = '';
-  // carbonDataMix: any = [];
-  // showChart: Boolean = false;
-  // chartValues: any = [];
-  // chartNames: any = [];
   selectedCountryObj = this.countryObjects[1];
   onChangeObj(newObj: { name: any }) {
-    console.log(newObj);
     this.data.getCarbonData(newObj.name.toLowerCase()).subscribe({
       next: val => {
         this.carbonData = val;
+
+        this.carbonDataCountry = this.carbonData.data?.[0].shortname;
+
+        this.carbonDataIndexNumber =
+          this.carbonData.data?.[0].data?.[0].intensity.forecast;
+
+        this.carbonDataIndex =
+          this.carbonData.data?.[0].data?.[0].intensity.index;
+
+        switch (this.carbonDataIndex) {
+          case 'high' || 'very high':
+            this.highCarbonDataIndex = true;
+            break;
+
+          case 'moderate':
+            this.moderateCarbonDataIndex = true;
+            break;
+
+          default:
+            this.lowCarbonDataIndex = true;
+            break;
+        }
+        // this.carbonDataMix = this.carbonData?.data?.[0].data?.[0].generationmix;
+        // this.carbonDataMix.forEach((element: any) => {
+        //   this.chartValues?.push(element.perc);
+        //   this.chartNames.push(element.fuel);
+        // });
       },
     });
   }
-  // async getCarbonData() {
-  //   // Resetting the chart so canvas is drawn with the new values
+
   //   this.showChart = false;
   //   this.chartValues = [];
   //   this.chartNames = [];
-  //   this.endpoint = this.preUrlEndpoint + this.selectedCountry.toLowerCase();
-  //   const getCarbonData = this.http.get(this.endpoint);
-  //   this.receivedCarbonData = await this.getCarbonData();
-  //   this.carbonData = this.receivedCarbonData.data[0];
-  //   this.carbonDataIndex =
-  //     this.receivedCarbonData.data[0].data[0].intensity.index;
-  //   this.carbonDataIndexNumber =
-  //     this.receivedCarbonData.data[0].data[0].intensity.forecast;
+
   //   this.carbonDataMix = this.receivedCarbonData.data[0].data[0].generationmix;
+
   //   this.carbonDataMix.forEach((element: any) => {
   //     this.chartValues.push(element.perc);
   //     this.chartNames.push(element.fuel);
   //   });
+
   //   // Setting this to true makes the canvas draw
   //   this.showChart = true;
-  // }
 }
