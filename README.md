@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/helgelol/angular-showcase/tree/main.svg?style=svg)](https://circleci.com/gh/helgelol/angular-showcase/tree/main)
+
 # Project overview
 
 SPA with several routes inside
