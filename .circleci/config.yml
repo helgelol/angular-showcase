@@ -1,17 +1,33 @@
+orbs:
+  node: circleci/node@5.0.2
+
 version: 2.1
+
 jobs:
-  build:
-    working_directory: ~/angular-showcase
+  install-deps:
     docker:
-      - image: cimg/node:16.15.1-browsers
+      - image: cimg/base:stable
     steps:
-      - checkout
-      - run:
-          name: install-dependencies
-          command: npm install
-      - run:
-          name: angular-build
-          command: npm run build
+      - node/install-packages
+workflows:
+  install-deps:
+    jobs:
+      - install-deps
+
+# jobs:
+#   build:
+#     working_directory: ~/angular-showcase
+#     docker:
+#       - image: cimg/node:16.15.1-browsers
+#     steps:
+#       - checkout
+#       - run:
+#           name: install-dependencies
+#           command: npm install
+#       - run:
+#           name: angular-build
+#           command: npm run build
+
 
 # orbs:
 #  docker: circleci/docker@1.5.0
