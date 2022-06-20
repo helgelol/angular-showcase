@@ -2,8 +2,8 @@ version: 2.1
 orbs:
   browser-tools: circleci/browser-tools@1.2.3
 jobs:
-  build:
-    working_directory: ~/ng-project
+  Build and verify:
+    working_directory: ~/angular-showcase
     docker:
       - image: cimg/node:16.13.1-browsers
     steps:
@@ -15,20 +15,42 @@ jobs:
             chromedriver --version
           name: Check install
       - checkout
-      - restore_cache:
-          key: ng-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
-      - run: npm install
-      - run: npm install --save-dev firebase-tools
-      - save_cache:
-          key: ng-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
-          paths:
-            - "node_modules"
+      - run: 
+          name: "Installing Dependencies"
+          command: npm install
       - run:
-          name: "Run test"
-          command: npm run test
+          name: "Run tests"
+          command: echo "Tests will be added later"
       - run:
-          name: "Build application for production"
+          name: "Verifying that application can be built"
           command: npm run build
+      - save_cache:
+          key: build-artifacts
+          paths:
+            - ./dist/angular-showcase
+
+  Containerize:
+    working_directory: ~/angular-showcase
+    docker:
+      - image: docker:latest
+      - restore_cache:
+          key: build-artifacts
+      - run:
+          name: "Preparing Docker Hub"
+          command: cat ./dist/angular-showcase/index.html
       # - run:
-      #     name: "Deploy app to Firebase Hosting"
-      #     command: "./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN"
+      #     name: "Building container"
+      #     command: asd
+      # - run:
+      #     name: "Pushing container"
+      #     command: asd
+
+  Deploy to Netlify:
+    working_directory: ~/angular-showcase
+    docker:
+      - image: helgejs/netlify-cli
+      - restore_cache:
+          key: build-artifacts
+      - run:
+          name: "Deploying to Netlify"
+          command: cat ./dist/angular-showcase/index.html
