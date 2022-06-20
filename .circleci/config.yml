@@ -62,8 +62,8 @@ workflows:
     jobs:
       - Build
       - Containerize
-          requires:
-            - Build
+          # requires:
+          #   - Build
       - Deploy to Netlify
-          requires:
-            - Build
+          # requires:
+          #   - Build
