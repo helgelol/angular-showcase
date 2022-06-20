@@ -64,8 +64,12 @@ jobs:
         
 workflows:
   version: 2
-  testing-of-workflow:
+  Continous Integration:
     jobs:
       - Build
-      - Dockerize
-      - Netlify
+      - Dockerize:
+          requires:
+            - Build
+      - Netlify:
+          requires:
+            - Build
