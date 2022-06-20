@@ -29,41 +29,43 @@ jobs:
           key: build-artifacts
           paths:
             - ./dist/angular-showcase
-  Containerize:
+
+  Dockerize:
     working_directory: ~/angular-showcase
     docker:
       - image: cimg/base:stable
     steps:
-      - docker/build:
-        - restore_cache:
-            key: build-artifacts
-        - run:
-            name: "Preparing Docker Hub"
-            command: cat ./dist/angular-showcase/index.html
-        # - run:
-        #     name: "Building container"
-        #     command: asd
-        # - run:
-        #     name: "Pushing container"
-        #     command: asd
-  Deploy to Netlify:
+      - checkout
+      - run:
+          name: "Fetching Artifacts"
+          command: echo "Artifacts"
+      - run:
+          name: "Docker Hub Login"
+          command: echo "login"
+      - run:
+          name: "Docker Build"
+          command: echo "build"
+      - run:
+          name: "Docker Push"
+          command: echo "push"
+
+  Netlify:
     working_directory: ~/angular-showcase
     docker:
       - image: helgejs/netlify-cli
     steps:
-      - restore_cache:
-          key: build-artifacts
+      - checkout
+      - run:
+          name: "Fetching Artifacts"
+          command: echo "Artifacts"
       - run:
           name: "Deploying to Netlify"
-          command: cat ./dist/angular-showcase/index.html
+          command: echo "Deploy to Netlify"
+        
 workflows:
   version: 2
   testing-of-workflow:
     jobs:
       - Build
-      - Containerize
-          # requires:
-          #   - Build
-      - Deploy to Netlify
-          # requires:
-          #   - Build
+      - Dockerize
+      - Netlify
