@@ -36,12 +36,11 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - run:
-          name: "Fetching Artifacts"
-          command: echo "Artifacts"
+      - restore_cache:
+          key: build-artifacts
       - run:
           name: "Docker Hub Login"
-          command: echo "login"
+          command: cat ./dist/angular-showcase/index.html
       - run:
           name: "Docker Build"
           command: echo "build"
