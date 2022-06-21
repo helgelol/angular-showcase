@@ -33,14 +33,19 @@ jobs:
   Dockerize:
     working_directory: ~/angular-showcase
     docker:
-      - image: docker:latest
+      - image: cimg/base:stable
+        auth:
+          username: $CI_REGISTRY_USER
+          password: $CI_REGISTRY_PASSWORD
     steps:
       - checkout
       - restore_cache:
           key: build-artifacts
+      - setup_remote_docker:
+          version: 20.10.14
       - run:
           name: "Docker Hub Login"
-          command:  docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+          command: echo $CI_REGISTRY_PASSWORD | docker login -u "$CI_REGISTRY_USER" --password-stdin
       - run:
           name: "Docker Build"
           command: docker build --pull -t "$CI_REGISTRY_IMAGE_LOC" .
