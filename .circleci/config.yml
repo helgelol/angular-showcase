@@ -33,7 +33,7 @@ jobs:
   Dockerize:
     working_directory: ~/angular-showcase
     docker:
-      - image: cimg/base:stable
+      - image: docker:latest
     steps:
       - checkout
       - restore_cache:
@@ -56,7 +56,8 @@ jobs:
       - checkout
       - run:
           name: "Deploying to Netlify"
-          command: netlify deploy --auth=$NETLIFY_PAT --dir=./dist/angular-showcase --site=$NETLIFY_SITE_ID --prod --message="$CIRCLE_BUILD_URL"
+          command: cat "./dist/angular-showcase/index.html"
+          #command: netlify deploy --auth=$NETLIFY_PAT --dir=./dist/angular-showcase --site=$NETLIFY_SITE_ID --prod --message="$CIRCLE_BUILD_URL"
         
 workflows:
   version: 2
