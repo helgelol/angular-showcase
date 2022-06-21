@@ -40,13 +40,13 @@ jobs:
           key: build-artifacts
       - run:
           name: "Docker Hub Login"
-          command: cat ./dist/angular-showcase/index.html
+          command: echo "docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY"
       - run:
           name: "Docker Build"
-          command: echo "build"
+          command: echo "docker build --pull -t "$CI_REGISTRY_IMAGE_LOC" ."
       - run:
           name: "Docker Push"
-          command: echo "push"
+          command: echo "docker push "$CI_REGISTRY_IMAGE_LOC""
 
   Netlify:
     working_directory: ~/angular-showcase
