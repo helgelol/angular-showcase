@@ -66,8 +66,7 @@ jobs:
           command: npm i -g netlify-cli
       - run:
           name: "Deploying to Netlify"
-          command: pwd && cat ./dist/angular-showcase/index.html
-          #command: netlify deploy --auth=$NETLIFY_PAT --dir=./dist/angular-showcase --site=$NETLIFY_SITE_ID --prod --message="$CIRCLE_BUILD_URL"
+          command: netlify deploy --auth=$NETLIFY_PAT --dir=./dist/angular-showcase --site=$NETLIFY_SITE_ID --prod --message="$CIRCLE_BUILD_URL"
 
 workflows:
   version: 2
