@@ -40,13 +40,13 @@ jobs:
           key: build-artifacts
       - run:
           name: "Docker Hub Login"
-          command: echo "docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY"
+          command:  docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
       - run:
           name: "Docker Build"
-          command: echo "docker build --pull -t "$CI_REGISTRY_IMAGE_LOC" ."
+          command: docker build --pull -t "$CI_REGISTRY_IMAGE_LOC" .
       - run:
           name: "Docker Push"
-          command: echo "docker push "$CI_REGISTRY_IMAGE_LOC""
+          command: docker push "$CI_REGISTRY_IMAGE_LOC"
 
   Netlify:
     working_directory: ~/angular-showcase
@@ -55,11 +55,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Fetching Artifacts"
-          command: echo "Artifacts"
-      - run:
           name: "Deploying to Netlify"
-          command: echo "Deploy to Netlify"
+          command: netlify deploy --auth=$NETLIFY_PAT --dir=./dist/angular-showcase --site=$NETLIFY_SITE_ID --prod --message="$CIRCLE_BUILD_URL"
         
 workflows:
   version: 2
