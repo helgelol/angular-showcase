@@ -59,9 +59,11 @@ jobs:
       - image: helgejs/netlify-cli
     steps:
       - checkout
+      - restore_cache:
+          key: build-artifacts      
       - run:
           name: "Deploying to Netlify"
-          command: cat "./dist/angular-showcase/index.html"
+          command: pwd && cat ./dist/angular-showcase/index.html
           #command: netlify deploy --auth=$NETLIFY_PAT --dir=./dist/angular-showcase --site=$NETLIFY_SITE_ID --prod --message="$CIRCLE_BUILD_URL"
         
 workflows:
