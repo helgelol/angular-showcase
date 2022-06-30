@@ -25,8 +25,8 @@ export class EmissionsCarbonIntensityComponent {
 
   countryObjects = [
     { name: 'England' },
-    { name: 'Wales' },
     { name: 'Scotland' },
+    { name: 'Wales' },
   ];
 
   carbonData?: CarbonDataModel;
@@ -44,19 +44,6 @@ export class EmissionsCarbonIntensityComponent {
         this.carbonDataIndex =
           this.carbonData.data?.[0].data?.[0].intensity.index;
 
-        switch (this.carbonDataIndex) {
-          case 'high' || 'very high':
-            this.highCarbonDataIndex = true;
-            break;
-
-          case 'moderate':
-            this.moderateCarbonDataIndex = true;
-            break;
-
-          default:
-            this.lowCarbonDataIndex = true;
-            break;
-        }
         // this.carbonDataMix = this.carbonData?.data?.[0].data?.[0].generationmix;
         // this.carbonDataMix.forEach((element: any) => {
         //   this.chartValues?.push(element.perc);

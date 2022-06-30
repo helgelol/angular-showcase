@@ -9,28 +9,34 @@
       {{ country.name }}
     </option>
   </select>
-</div>
-<div *ngIf="carbonData" class="mt-4">
-  <h1>{{ carbonDataCountry }}</h1>
-  <div *ngIf="highCarbonDataIndex">
-    <h2 style="color: red">
-      {{ carbonDataIndexNumber }} ({{ carbonDataIndex }})
-    </h2>
-    <p>gCO<span style="font-size: x-small">2</span>/kwh</p>
-  </div>
-  <div *ngIf="moderateCarbonDataIndex">
-    <h2 style="color: orange">
-      {{ carbonDataIndexNumber }} ({{ carbonDataIndex }})
-    </h2>
-    <p>gCO<span style="font-size: x-small">2</span>/kwh</p>
-  </div>
-  <div *ngIf="lowCarbonDataIndex">
-    <h2 style="color: green">
-      {{ carbonDataIndexNumber }} ({{ carbonDataIndex }})
-    </h2>
-    <p>gCO<span style="font-size: x-small">2</span>/kwh</p>
-  </div>
+  <div *ngIf="carbonData" class="mt-4">
+    <h1>{{ carbonDataCountry }}</h1>
+    <div
+      *ngIf="
+        this.carbonDataIndex == 'high' || this.carbonDataIndex == 'very high'
+      ">
+      <h2 style="color: red">
+        {{ carbonDataIndexNumber }} ({{ carbonDataIndex }})
+      </h2>
+      <p>gCO<span style="font-size: x-small">2</span>/kwh</p>
+    </div>
+    <div *ngIf="this.carbonDataIndex == 'moderate'">
+      <h2 style="color: orange">
+        {{ carbonDataIndexNumber }} ({{ carbonDataIndex }})
+      </h2>
+      <p>gCO<span style="font-size: x-small">2</span>/kwh</p>
+    </div>
+    <div
+      *ngIf="
+        this.carbonDataIndex == 'low' || this.carbonDataIndex == 'very low'
+      ">
+      <h2 style="color: green">
+        {{ carbonDataIndexNumber }} ({{ carbonDataIndex }})
+      </h2>
+      <p>gCO<span style="font-size: x-small">2</span>/kwh</p>
+    </div>
 
-  <!-- {{ carbonData | json }} -->
-  <!-- {{ carbonData.data[0].data[0].intensity.index }} -->
+    <!-- {{ carbonData | json }} -->
+    <!-- {{ carbonData.data[0].data[0].intensity.index }} -->
+  </div>
 </div>
