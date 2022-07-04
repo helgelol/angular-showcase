@@ -16,14 +16,14 @@ jobs:
             chromedriver --version
           name: Check install
       - checkout
-      - run: 
-          name: "Installing Dependencies"
+      - run:
+          name: 'Installing Dependencies'
           command: npm install
       - run:
-          name: "Run tests"
+          name: 'Run tests'
           command: echo "Tests will be added later"
       - run:
-          name: "Verifying that application can be built"
+          name: 'Verifying that application can be built'
           command: npm run build
       - save_cache:
           key: build-artifacts
@@ -44,13 +44,13 @@ jobs:
       - setup_remote_docker:
           version: 20.10.14
       - run:
-          name: "Docker Hub Login"
+          name: 'Docker Hub Login'
           command: echo $CI_REGISTRY_PASSWORD | docker login -u "$CI_REGISTRY_USER" --password-stdin
       - run:
-          name: "Docker Build"
+          name: 'Docker Build'
           command: docker build --pull -t "$CI_REGISTRY_IMAGE_LOC" .
       - run:
-          name: "Docker Push"
+          name: 'Docker Push'
           command: docker push "$CI_REGISTRY_IMAGE_LOC"
 
   Netlify:
@@ -60,12 +60,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: build-artifacts      
+          key: build-artifacts
       - run:
-          name: "Preparing Netlify"
+          name: 'Preparing Netlify'
           command: npm i -g netlify-cli
       - run:
-          name: "Deploying to Netlify"
+          name: 'Deploying to Netlify'
           command: netlify deploy --auth=$NETLIFY_PAT --dir=./dist/angular-showcase --site=$NETLIFY_SITE_ID --prod --message="$CIRCLE_BUILD_URL"
 
 workflows:
@@ -73,9 +73,9 @@ workflows:
   Continous Integration:
     jobs:
       - Build
-      - Dockerize:
-          requires:
-            - Build
+      # - Dockerize:
+      #     requires:
+      #       - Build
       - Netlify:
           requires:
             - Build
