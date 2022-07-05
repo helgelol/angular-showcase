@@ -50,6 +50,7 @@ export class EmissionsCarbonIntensityComponent {
         this.carbonDataMix.forEach((element: any) => {
           this.pieChartData.push({ label: element.fuel, value: element.perc });
         });
+        console.log('Data fetched');
 
         this.options = {
           data: this.pieChartData,
@@ -58,21 +59,10 @@ export class EmissionsCarbonIntensityComponent {
               type: 'pie',
               angleKey: 'value',
               labelKey: 'label',
-              colors: [
-                'rgba(255, 99, 132, 0.5)',
-                'rgba(212, 40, 55, 0.5)',
-                'rgba(246, 108, 75, 0.5)',
-                'rgba(54, 162, 235, 0.5)',
-                'rgba(0, 130, 68, 0.5)',
-                'rgba(255, 206, 86, 0.5)',
-                'rgba(75, 192, 192, 0.5)',
-                'rgba(153, 102, 255, 0.5)',
-                'rgba(255, 159, 64, 0.5)',
-                'rgba(130, 90, 50, 0.5)',
-              ],
             },
           ],
         };
+        console.log('Chart should be drawn now');
       },
     });
   }
