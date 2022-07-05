@@ -102,5 +102,7 @@
       }
     }
   },
-  "defaultProject": "angular-showcase"
+  "cli": {
+    "analytics": false
+  }
 }
