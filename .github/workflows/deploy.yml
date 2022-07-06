@@ -16,12 +16,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - run: yarn
-      - run: yarn build
+      - run: npm install
+      - run: npm run build
       - name: Deploy to netlify
         uses: netlify/actions/cli@master
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         with:
-          args: deploy --dir=dist --prod --message "${{ github.event.head_commit.message }}"
+          args: deploy --dir=dist/angular-showcase --prod --message "${{ github.event.head_commit.message }}"
