@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/helgelol/angular-showcase/tree/main.svg?style=svg)](https://circleci.com/gh/helgelol/angular-showcase/tree/main)
+![Deploy](https://github.com/helgelol/angular-showcase/actions/workflows/deploy.yml/badge.svg)
 
 # Project overview
 
