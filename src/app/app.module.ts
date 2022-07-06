@@ -15,6 +15,13 @@ import { UserdbComponent } from './pages/userdb/userdb.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { EmissionsCarbonIntensityComponent } from './components/emissions-carbon-intensity/emissions-carbon-intensity.component';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +40,11 @@ import { EmissionsCarbonIntensityComponent } from './components/emissions-carbon
     BrowserAnimationsModule,
     FormsModule,
     AgChartsAngularModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
