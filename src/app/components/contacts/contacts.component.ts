@@ -40,11 +40,11 @@ import { Observable, of } from 'rxjs';
   ],
 })
 export class ContactsComponent implements OnInit {
-  users$: Observable<any> = of(); // sorry for hackz
+  contacts$: Observable<any> = of(); // sorry for hackz
 
   constructor(private data: DataService) {}
 
   ngOnInit(): void {
-    this.users$ = this.data.getUsers();
+    this.contacts$ = this.data.getUsers();
   }
 }

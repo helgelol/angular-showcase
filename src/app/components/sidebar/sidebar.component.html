@@ -2,7 +2,8 @@
   <ul>
     <li>
       <a
-        routerLink=""
+        class="hover:bg-yellow-400"
+        routerLink="home"
         routerLinkActive="activated"
         [routerLinkActiveOptions]="{ exact: true }">
         <i class="material-icons"
@@ -12,14 +13,16 @@
     </li>
     <li>
       <a
+        class="hover:bg-yellow-500"
         routerLink="users"
         routerLinkActive="activated"
         [routerLinkActiveOptions]="{ exact: true }">
-        <i class="material-icons">supervised_user_circle</i>
+        <i class="material-icons">groups</i>
       </a>
     </li>
     <li>
       <a
+        class="hover:bg-yellow-500"
         routerLink="emissions"
         routerLinkActive="activated"
         [routerLinkActiveOptions]="{ exact: true }">
@@ -30,11 +33,32 @@
     </li>
     <li>
       <a
+        class="hover:bg-yellow-500"
         routerLink="weight"
         routerLinkActive="activated"
         [routerLinkActiveOptions]="{ exact: true }">
         <i class="material-icons"
           ><span class="material-icons-outlined"> trending_down </span></i
+        >
+      </a>
+    </li>
+    <li>
+      <a
+        class="hover:bg-yellow-500"
+        routerLink="profile"
+        routerLinkActive="activated"
+        [routerLinkActiveOptions]="{ exact: true }">
+        <i class="material-icons"
+          ><span class="material-icons-outlined"> account_circle </span></i
+        >
+      </a>
+    </li>
+    <li>
+      <a
+        class="hover:bg-red-500 cursor-pointer"
+        (click)="authServices.SignOut()">
+        <i class="material-icons"
+          ><span class="material-icons-outlined"> logout </span></i
         >
       </a>
     </li>
