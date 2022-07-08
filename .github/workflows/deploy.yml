@@ -1,4 +1,4 @@
-name: Continuous Integration & Deployment
+name: Continuous Deployment
 
 on:
   push:
@@ -24,6 +24,7 @@ jobs:
         run: npm run lint
 
   build:
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
