@@ -1,8 +1,9 @@
-name: Continuous Integration & Deployment
+name: Continuous Integration
 
 on:
   push:
-    branches: [main]
+    branches:
+      - '!main' # Runs on all branches except 'main'
 
 jobs:
   lint:
@@ -40,11 +41,3 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Deploy to netlify
-        uses: netlify/actions/cli@master
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        with:
-          args: deploy --dir=dist/angular-showcase --prod --message "${{ github.event.head_commit.message }}"
